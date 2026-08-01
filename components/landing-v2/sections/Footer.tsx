@@ -25,16 +25,17 @@ const quickLinks = [
     href: "/#faq",
   },
   {
+    label: "Contact Us",
+    href: "/contact",
+  },
+  {
     label: "Checkout",
     href: "/checkout",
   },
 ];
 
 const legalLinks = [
-  {
-    label: "Privacy Policy",
-    href: "/privacy",
-  },
+  
   {
     label: "Terms & Conditions",
     href: "/terms",
@@ -152,71 +153,41 @@ export default function Footer() {
           </div>
 
           {/* Legal */}
+<div>
 
-          <div>
+  <h4 className="text-sm font-semibold text-black">
 
-            <h4 className="text-sm font-semibold text-black">
+    Contact
 
-              Legal
+  </h4>
 
-            </h4>
+  <div className="mt-5 space-y-4 text-sm text-neutral-600">
 
-            <div className="mt-5 space-y-3">
+    <p>
 
-              {legalLinks.map((item) => (
+      📧 arihantlala830@gmail.com
 
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="block text-sm text-neutral-600 transition hover:text-black"
-                >
+    </p>
 
-                  {item.label}
+    <p>
 
-                </Link>
+      🌐 India
 
-              ))}
+    </p>
 
-            </div>
+    <p>
 
-          </div>
+      Monday – Saturday
 
-          {/* Social */}
+      <br />
 
-          <div>
+      10:00 AM – 7:00 PM (IST)
 
-            <h4 className="text-sm font-semibold text-black">
+    </p>
 
-              Connect
+  </div>
 
-            </h4>
-
-            <div className="mt-5 space-y-3">
-
-              {socialLinks.map((item) => {
-
-                const Icon = item.icon;
-
-                return (
-
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="group flex items-center gap-3 text-sm text-neutral-600 transition hover:text-black"
-                  >
-
-                    <Icon className="h-4 w-4" />
-
-                    {item.label}
-
-                  </Link>
-
-                );
-
-              })}
-                          </div>
-
-          </div>
+</div>
 
         </motion.div>
 
