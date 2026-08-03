@@ -2,22 +2,26 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-import Button from "../ui/Button";
-import Container from "../ui/Container";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
+import Container from "../ui/Container";
+import Button from "../ui/Button";
+
 export default function Navbar() {
+  const router = useRouter();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
 
     handleScroll();
@@ -29,7 +33,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const sections = NAV_LINKS.map((item) =>
-      document.getElementById(item.href.replace("#", ""))
+      document.querySelector(item.href)
     ).filter(Boolean);
 
     const observer = new IntersectionObserver(
@@ -41,7 +45,7 @@ export default function Navbar() {
         });
       },
       {
-        threshold: 0.35,
+        rootMargin: "-35% 0px -55% 0px",
       }
     );
 
@@ -53,9 +57,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (!mobileOpen) return;
-
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
@@ -65,159 +67,220 @@ export default function Navbar() {
   const scrollToSection = (href: string) => {
     setMobileOpen(false);
 
-    const section = document.querySelector(href);
+    const section = document.querySelector(href) as HTMLElement | null;
 
     if (!section) return;
 
-    section.scrollIntoView({
+    const navbarHeight = 72;
+
+    const top =
+      section.getBoundingClientRect().top +
+      window.scrollY -
+      navbarHeight;
+
+    window.scrollTo({
+      top,
       behavior: "smooth",
-      block: "start",
     });
   };
-
   return (
-    <>
-      <motion.header
-        initial={{
-          y: -80,
-          opacity: 0,
-        }}
-        animate={{
-          y: 0,
-          opacity: 1,
-        }}
-        transition={{
-          duration: 0.6,
-          ease: "easeOut",
-        }}
-        className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-          isScrolled
-            ? "border-b border-white/10 bg-[#0B0B0F]/80 backdrop-blur-xl"
-            : "bg-transparent"
-        )}
-      >
-        <Container>
-          <div className="flex h-20 items-center justify-between">
-                        {/* Logo */}
+  <>
+    <motion.header
+      initial={{
+        y: -80,
+        opacity: 0,
+      }}
+      animate={{
+        y: 0,
+        opacity: 1,
+      }}
+      transition={{
+        duration: 0.45,
+      }}
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "border-b border-neutral-200 bg-white/90 backdrop-blur-xl shadow-sm"
+          : "bg-transparent"
+      )}
+    >
+      <Container className="max-w-7xl">
 
-            <Link
-              href="/"
-              className="flex items-center gap-3 transition-opacity hover:opacity-90"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 backdrop-blur-md">
-                <span className="text-lg font-bold text-cyan-300">AI</span>
-              </div>
+        <div className="flex h-[72px] items-center justify-between">
 
-              <div className="flex flex-col leading-none">
-                <span className="text-base font-semibold tracking-tight text-white">
-                  {SITE.name}
-                </span>
+          {/* Logo */}
 
-                <span className="text-xs text-white/45">
-                  Practical AI Learning
-                </span>
-              </div>
-            </Link>
+          <Link
+            href="/"
+            className="flex items-center gap-3"
+          >
 
-            {/* Desktop Navigation */}
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black shadow-md">
 
-            <nav className="hidden items-center gap-8 lg:flex">
-              {NAV_LINKS.map((item) => {
-                const active = activeSection === item.href;
+              <span className="text-base font-bold text-white">
+                AI
+              </span>
 
-                return (
-                  <button
-                    key={item.href}
-                    onClick={() => scrollToSection(item.href)}
-                    className={cn(
-                      "relative text-[15px] font-medium transition-colors duration-300",
-                      active
-                        ? "text-white"
-                        : "text-white/60 hover:text-white"
-                    )}
-                  >
-                    {item.label}
-
-                    {active && (
-                      <motion.span
-                        layoutId="navbar-indicator"
-                        className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-cyan-400"
-                        transition={{
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 30,
-                        }}
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </nav>
-
-            {/* Desktop CTA */}
-
-            <div className="hidden items-center lg:flex">
-              <Button
-                size="md"
-                showArrow
-                onClick={() => scrollToSection("#pricing")}
-              >
-                Buy Now • ₹{SITE.price}
-              </Button>
             </div>
 
-            {/* Mobile Button */}
+            <div>
 
-            <button
-              onClick={() => setMobileOpen((prev) => !prev)}
-              aria-label="Toggle Navigation"
-              className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-all hover:border-cyan-400/40 hover:bg-white/10 lg:hidden"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={mobileOpen ? "close" : "menu"}
-                  initial={{
-                    rotate: -90,
-                    opacity: 0,
-                  }}
-                  animate={{
-                    rotate: 0,
-                    opacity: 1,
-                  }}
-                  exit={{
-                    rotate: 90,
-                    opacity: 0,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                  }}
-                >
-                  {mobileOpen ? (
-                    <X size={22} />
-                  ) : (
-                    <Menu size={22} />
+              <h2 className="text-[17px] font-bold text-black">
+                {SITE.name}
+              </h2>
+
+              <p className="text-xs text-neutral-500">
+                Practical AI Learning
+              </p>
+
+            </div>
+
+          </Link>
+
+          {/* Desktop Navigation */}
+
+          <nav className="hidden items-center gap-10 lg:flex">
+
+            {NAV_LINKS.map((item) => {
+
+              const active =
+                activeSection === item.href;
+
+              return (
+
+                <button
+                  key={item.href}
+                  onClick={() =>
+                    scrollToSection(item.href)
+                  }
+                  className={cn(
+                    "relative text-[15px] font-medium transition-colors",
+                    active
+                      ? "text-black"
+                      : "text-neutral-500 hover:text-black"
                   )}
-                </motion.div>
-              </AnimatePresence>
-            </button>
-                      </div>
-        </Container>
-      </motion.header>
+                >
 
-      {/* Mobile Menu */}
+                  {item.label}
+
+                  {active && (
+
+                    <motion.span
+                      layoutId="navbar-active"
+                      className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-black"
+                    />
+
+                  )}
+
+                </button>
+
+              );
+
+            })}
+
+          </nav>
+
+          {/* CTA */}
+
+          <div className="hidden lg:block">
+
+            <Button
+              size="lg"
+              onClick={() => router.push("/checkout")}
+              className="
+                h-11
+                rounded-xl
+                bg-black
+                px-6
+                text-sm
+                font-semibold
+                text-white
+                shadow-lg
+                transition-all
+                hover:scale-[1.02]
+                hover:bg-neutral-900
+              "
+            >
+
+              Buy Now • ₹{SITE.price}
+
+            </Button>
+
+          </div>
+
+          {/* Mobile */}
+
+          <button
+            onClick={() =>
+              setMobileOpen((prev) => !prev)
+            }
+            className="
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-xl
+              border
+              border-neutral-200
+              bg-white
+              text-black
+              shadow-sm
+              lg:hidden
+            "
+          >
+
+            <AnimatePresence mode="wait">
+
+              <motion.div
+                key={mobileOpen ? "close" : "menu"}
+                initial={{
+                  opacity: 0,
+                  rotate: -90,
+                }}
+                animate={{
+                  opacity: 1,
+                  rotate: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  rotate: 90,
+                }}
+              >
+
+                {mobileOpen ? (
+                  <X size={20} />
+                ) : (
+                  <Menu size={20} />
+                )}
+
+              </motion.div>
+
+            </AnimatePresence>
+
+          </button>
+
+        </div>
+
+      </Container>
+
+    </motion.header>
+          {/* Mobile Menu */}
 
       <AnimatePresence>
+
         {mobileOpen && (
+
           <>
-            {/* Backdrop */}
+
+            {/* Overlay */}
 
             <motion.div
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden"
             />
 
             {/* Drawer */}
@@ -238,42 +301,87 @@ export default function Navbar() {
               transition={{
                 duration: 0.25,
               }}
-              className="fixed left-4 right-4 top-24 z-50 overflow-hidden rounded-3xl border border-white/10 bg-[#111827]/95 p-6 shadow-2xl backdrop-blur-2xl lg:hidden"
+              className="
+                fixed
+                left-4
+                right-4
+                top-24
+                z-50
+                rounded-3xl
+                border
+                border-neutral-200
+                bg-white
+                p-6
+                shadow-2xl
+                lg:hidden
+              "
             >
+
               <nav className="flex flex-col gap-2">
+
                 {NAV_LINKS.map((item) => {
-                  const active = activeSection === item.href;
+
+                  const active =
+                    activeSection === item.href;
 
                   return (
+
                     <button
                       key={item.href}
-                      onClick={() => scrollToSection(item.href)}
+                      onClick={() =>
+                        scrollToSection(item.href)
+                      }
                       className={cn(
-                        "rounded-xl px-4 py-3 text-left text-base font-medium transition-all duration-300",
+                        "rounded-xl px-4 py-3 text-left text-base font-medium transition-all",
                         active
-                          ? "bg-cyan-400/10 text-cyan-300"
-                          : "text-white/70 hover:bg-white/5 hover:text-white"
+                          ? "bg-black text-white"
+                          : "text-neutral-700 hover:bg-neutral-100 hover:text-black"
                       )}
                     >
+
                       {item.label}
+
                     </button>
+
                   );
+
                 })}
+
               </nav>
 
               <div className="mt-6">
+
                 <Button
                   fullWidth
-                  showArrow
-                  onClick={() => scrollToSection("#pricing")}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    router.push("/checkout");
+                  }}
+                  className="
+                    h-12
+                    rounded-xl
+                    bg-black
+                    text-white
+                    hover:bg-neutral-900
+                  "
                 >
-                  Buy Now • ₹{SITE.price}
+
+                  Buy Now
+
                 </Button>
+
               </div>
+
             </motion.div>
+
           </>
+
         )}
+
       </AnimatePresence>
+
     </>
+
   );
+
 }

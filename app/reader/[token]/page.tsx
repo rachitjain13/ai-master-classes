@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import dynamic from "next/dynamic";
+import { BookOpen, ShieldCheck } from "lucide-react";
 
 import ReaderHeader from "@/components/reader/ReaderHeader";
 
@@ -11,8 +12,18 @@ const PDFViewer = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-[80vh] items-center justify-center">
-        <div className="h-12 w-12 animate-spin rounded-full border-4 border-zinc-700 border-t-white" />
+      <div className="flex h-[80vh] items-center justify-center bg-[#f6f7fb]">
+
+        <div className="flex flex-col items-center gap-5">
+
+          <div className="h-12 w-12 animate-spin rounded-full border-[3px] border-neutral-300 border-t-black" />
+
+          <p className="text-sm font-medium text-neutral-500">
+            Loading PDF...
+          </p>
+
+        </div>
+
       </div>
     ),
   }
@@ -32,6 +43,7 @@ interface ReaderApiResponse {
 }
 
 export default function ReaderPage() {
+
   const params = useParams();
 
   const token = params.token as string;
@@ -51,32 +63,38 @@ export default function ReaderPage() {
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
+
     if (!token) return;
 
     let cancelled = false;
 
     async function fetchBook() {
+
       try {
+
         setLoading(true);
-        console.log("Token:", token);
+
         const response = await fetch(`/api/reader/${token}`);
 
-const text = await response.text();
+        const text = await response.text();
 
-console.log("Status:", response.status);
-console.log("Response:", text);
+        let data: ReaderApiResponse;
 
-let data: ReaderApiResponse;
+        try {
 
-try {
-  data = JSON.parse(text);
-} catch {
-  throw new Error("API did not return JSON");
-}
+          data = JSON.parse(text);
 
-if (!response.ok || !data.success) {
-  throw new Error(`API Error (${response.status})`);
-}
+        } catch {
+
+          throw new Error("API did not return JSON");
+
+        }
+
+        if (!response.ok || !data.success) {
+
+          throw new Error(`API Error (${response.status})`);
+
+        }
 
         if (cancelled) return;
 
@@ -96,24 +114,30 @@ if (!response.ok || !data.success) {
 
         setError("");
 
-      } catch (err) {
-        if (cancelled) return;
+      } catch {
 
-        console.error(err);
+        if (cancelled) return;
 
         setError("Unable to load your book.");
 
       } finally {
+
         if (!cancelled) {
+
           setLoading(false);
+
         }
+
       }
+
     }
 
     void fetchBook();
 
     return () => {
+
       cancelled = true;
+
     };
 
   }, [token]);
@@ -136,51 +160,117 @@ if (!response.ok || !data.success) {
       Math.max(prev - 1, 1)
     );
   }, []);
-    if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-black">
-        <div className="flex flex-col items-center gap-5">
-          <div className="h-14 w-14 animate-spin rounded-full border-4 border-zinc-700 border-t-white" />
 
-          <h2 className="text-2xl font-bold text-white">
-            Loading Your Book...
+  if (loading) {
+
+    return (
+
+      <main className="flex min-h-screen items-center justify-center bg-[#f6f7fb] px-6">
+
+        <div className="w-full max-w-md rounded-3xl border border-neutral-200 bg-white p-10 shadow-xl">
+
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-black">
+
+            <BookOpen
+              size={28}
+              className="text-white"
+            />
+
+          </div>
+
+          <h2 className="mt-8 text-center text-3xl font-bold text-black">
+
+            Preparing Your Book
+
           </h2>
 
-          <p className="text-sm text-zinc-400">
-            Verifying your secure access...
+          <p className="mt-4 text-center leading-7 text-neutral-500">
+
+            Verifying your secure access and preparing
+            your reading experience.
+
           </p>
+
+          <div className="mt-8 h-2 overflow-hidden rounded-full bg-neutral-200">
+
+            <div className="h-full w-1/2 animate-pulse rounded-full bg-black" />
+
+          </div>
+
+          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-neutral-500">
+
+            <ShieldCheck size={16} />
+
+            Secure Reader Enabled
+
+          </div>
+
         </div>
-      </div>
+
+      </main>
+
     );
+
   }
+    if (error) {
 
-  if (error) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-black px-6">
-        <div className="w-full max-w-md rounded-2xl border border-red-500/20 bg-zinc-900 p-8 text-center">
 
-          <h1 className="mb-3 text-3xl font-bold text-red-500">
-            Access Denied
+      <main className="flex min-h-screen items-center justify-center bg-[#f6f7fb] px-6">
+
+        <div className="w-full max-w-md rounded-3xl border border-red-200 bg-white p-10 shadow-xl">
+
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-red-100">
+
+            <ShieldCheck
+              size={28}
+              className="text-red-500"
+            />
+
+          </div>
+
+          <h1 className="mt-8 text-center text-3xl font-bold text-black">
+
+            Unable to Open Book
+
           </h1>
 
-          <p className="text-zinc-300">
+          <p className="mt-4 text-center leading-7 text-neutral-500">
+
             {error}
+
           </p>
 
           <button
             onClick={() => window.location.reload()}
-            className="mt-8 rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:scale-105"
+            className="
+              mt-8
+              w-full
+              rounded-xl
+              bg-black
+              py-3
+              font-semibold
+              text-white
+              transition
+              hover:bg-neutral-900
+            "
           >
+
             Retry
+
           </button>
 
         </div>
-      </div>
+
+      </main>
+
     );
+
   }
 
   return (
-    <main className="min-h-screen bg-black text-white">
+
+    <main className="min-h-screen bg-[#f6f7fb]">
 
       <ReaderHeader
         title="AI Master Classes"
@@ -195,23 +285,43 @@ if (!response.ok || !data.success) {
         }
       />
 
-      <div className="mx-auto max-w-7xl px-5 py-6">
+      <div className="mx-auto max-w-[1550px] px-4 py-6 lg:px-8">
 
-        <PDFViewer
-          pdfUrl={pdfUrl}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-          customerName={customerName}
-          customerEmail={customerEmail}
-        />
+        {/* Reader Card */}
+
+        <div
+          className="
+            overflow-hidden
+            rounded-[28px]
+            border
+            border-neutral-200
+            bg-white
+            shadow-[0_15px_50px_rgba(0,0,0,.08)]
+          "
+        >
+
+          <PDFViewer
+            pdfUrl={pdfUrl}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+            customerName={customerName}
+            customerEmail={customerEmail}
+          />
+
+        </div>
+                {/* End Reader Card */}
 
       </div>
-            {/* Security Overlay */}
+
+      {/* Security Overlay */}
+
       <div
         className="pointer-events-none fixed inset-0 z-[9999] select-none"
         aria-hidden="true"
       />
 
     </main>
+
   );
+
 }

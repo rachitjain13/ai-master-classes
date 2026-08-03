@@ -61,11 +61,8 @@ export default function FAQ() {
 
         {/* Heading */}
 
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: .45 }}
+        <div
+          
           className="mx-auto max-w-3xl text-center"
         >
 
@@ -91,7 +88,7 @@ export default function FAQ() {
 
           </p>
 
-        </motion.div>
+        </div>
 
         {/* FAQ */}
 
@@ -103,14 +100,9 @@ export default function FAQ() {
 
             return (
 
-              <motion.div
+              <div
                 key={faq.question}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  delay: index * .05,
-                }}
+                
                 className={`
                   overflow-hidden
                   rounded-[26px]
@@ -140,19 +132,14 @@ export default function FAQ() {
 
                   </h3>
 
-                  <motion.div
-                    animate={{
-                      rotate: isOpen ? 45 : 0,
-                    }}
-                    transition={{
-                      duration: .25,
-                    }}
+                  <div
+                    
                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-violet-100"
                   >
 
                     <Plus className="h-4 w-4 text-violet-700" />
 
-                  </motion.div>
+                  </div>
 
                 </button>
 
@@ -160,22 +147,8 @@ export default function FAQ() {
 
                   {isOpen && (
 
-                    <motion.div
-                      initial={{
-                        height: 0,
-                        opacity: 0,
-                      }}
-                      animate={{
-                        height: "auto",
-                        opacity: 1,
-                      }}
-                      exit={{
-                        height: 0,
-                        opacity: 0,
-                      }}
-                      transition={{
-                        duration: .3,
-                      }}
+                    <div
+                     
                       className="overflow-hidden"
                     >
 
@@ -189,14 +162,14 @@ export default function FAQ() {
 
                       </div>
 
-                    </motion.div>
+                    </div>
 
                   )}
                         
 
                 </AnimatePresence>
 
-              </motion.div>
+              </div>
 
             );
 
@@ -204,162 +177,17 @@ export default function FAQ() {
 
         </div>
 
-        {/* Bottom CTA */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.45,
-          }}
-          className="mt-16"
-        >
-
-          <div className="rounded-[28px] border border-violet-200 bg-gradient-to-br from-white via-violet-50/40 to-white p-7">
-
-            <div className="flex flex-col items-center text-center">
-
-              <span className="rounded-full bg-violet-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.30em] text-violet-700">
-
-                STILL HAVE QUESTIONS?
-
-              </span>
-
-              <h3 className="mt-5 text-2xl font-bold tracking-tight text-black">
-
-                We are Here To Help.
-
-              </h3>
-
-              <p className="mt-3 max-w-lg text-[15px] leading-7 text-neutral-600">
-
-                If you still have any questions before purchasing,
-                feel free to contact us. Otherwise, start learning AI
-                today with instant lifetime access.
-
-              </p>
-
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-
-                <Link
-                  href="/contact"
-                  className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-neutral-300
-                    bg-white
-                    px-6
-                    py-3
-                    text-sm
-                    font-semibold
-                    text-neutral-800
-                    transition-all
-                    duration-300
-                    hover:border-violet-300
-                    hover:text-violet-700
-                  "
-                >
-                  Contact Us
-                </Link>
-
-                <Link
-                  href="/checkout"
-                  className="
-                    group
-                    inline-flex
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-full
-                    bg-black
-                    px-7
-                    py-3
-                    text-sm
-                    font-semibold
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:-translate-y-0.5
-                    hover:bg-neutral-900
-                    hover:shadow-[0_15px_40px_rgba(0,0,0,.15)]
-                  "
-                >
-
-                  Get Instant Access
-
-                  <ArrowRight
-                    className="
-                      h-4
-                      w-4
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  />
-
-                </Link>
-
-              </div>
-
-              <div className="mt-7 flex flex-wrap items-center justify-center gap-5 text-xs text-neutral-500">
-
-                <span>✓ One-Time Payment</span>
-
-                <span>•</span>
-
-                <span>✓ Lifetime Access</span>
-
-                <span>•</span>
-
-                <span>✓ Instant Delivery</span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </motion.div>
-
       </Container>
 
       {/* Ambient Glow */}
 
-      <motion.div
-        animate={{
-          opacity: [0.03, 0.08, 0.03],
-          scale: [1, 1.05, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-violet-300 blur-[150px]"
       />
 
-      <motion.div
-        animate={{
-          opacity: [0.02, 0.07, 0.02],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="pointer-events-none absolute -right-24 bottom-20 h-80 w-80 rounded-full bg-violet-200 blur-[170px]"
       />
 

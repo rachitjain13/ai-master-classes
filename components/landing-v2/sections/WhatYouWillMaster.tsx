@@ -127,23 +127,9 @@ export default function WhatYouWillMaster() {
   const Icon = skill.icon;
 
   return (
-    <motion.div
+    <div
       key={skill.id}
-      initial={{
-        opacity: 0,
-        y: 40,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-      }}
-      transition={{
-        delay: index * 0.08,
-        duration: 0.55,
-      }}
+      className="h-full"
     >
       <Link
         href="/checkout"
@@ -314,93 +300,12 @@ export default function WhatYouWillMaster() {
 
       </Link>
 
-    </motion.div>
+    </div>
   );
 })}
         </div>
 
-        {/* Bottom CTA */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 25,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            delay: 0.15,
-            duration: 0.6,
-          }}
-          className="mt-20 flex flex-col items-center justify-center text-center"
-        >
-
-          <span className="text-sm uppercase tracking-[0.32em] text-neutral-500">
-
-            Ready To Start?
-
-          </span>
-
-          <h3 className="mt-5 max-w-2xl text-3xl font-bold tracking-tight text-black md:text-4xl">
-
-            Start Learning AI
-            <br />
-            With Practical Skills.
-
-          </h3>
-
-          <p className="mt-5 max-w-xl text-lg leading-8 text-neutral-600">
-
-            Join the complete learning experience and build
-            practical AI skills through structured lessons.
-
-          </p>
-
-          <Link
-            href="/checkout"
-            className="
-              group
-              mt-10
-              inline-flex
-              items-center
-              gap-3
-              rounded-full
-              bg-black
-              px-8
-              py-4
-              text-base
-              font-semibold
-              text-white
-              transition-all
-              duration-300
-              hover:scale-[1.02]
-              hover:bg-neutral-900
-              hover:shadow-[0_20px_60px_rgba(0,0,0,0.18)]
-            "
-          >
-
-            Get Instant Access
-
-            <ArrowRight
-              className="
-                h-5
-                w-5
-                transition-transform
-                duration-300
-                group-hover:translate-x-1
-              "
-            />
-
-          </Link>
-
-        </motion.div>
-              </Container>
-
+      </Container>
       {/* Bottom Fade */}
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent" />

@@ -279,7 +279,7 @@ console.log(result);
 
               {loading
                 ? "Creating Secure Session..."
-                : "Pay ₹149 Securely"}
+                : "Pay ₹149 "}
 
               <ArrowRight
                 size={16}
@@ -333,13 +333,13 @@ console.log(result);
 
               <span className="text-4xl font-bold tracking-tight text-black">
 
-                ₹999
+                ₹149
 
               </span>
 
               <span className="pb-1 text-base text-neutral-400 line-through">
 
-                ₹149
+                ₹999
 
               </span>
 
@@ -350,11 +350,7 @@ console.log(result);
             <div className="mt-8 space-y-3">
 
               {[
-                "20 Practical Chapters",
-                "100+ AI Prompts",
-                "Lifetime Updates",
-                "Instant Access",
-                "Beginner Friendly",
+                
               ].map((item) => (
 
                 <div

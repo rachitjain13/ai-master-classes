@@ -80,21 +80,8 @@ export default function LearningJourney() {
 
         {/* Heading */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.6,
-          }}
+        <div
+          
           className="mx-auto max-w-4xl text-center"
         >
 
@@ -122,7 +109,7 @@ export default function LearningJourney() {
 
           </p>
 
-        </motion.div>
+        </div>
 
         {/* Timeline */}
 
@@ -137,23 +124,8 @@ export default function LearningJourney() {
   const Icon = item.icon;
 
   return (
-    <motion.div
+    <div
       key={item.step}
-      initial={{
-        opacity: 0,
-        x: 60,
-      }}
-      whileInView={{
-        opacity: 1,
-        x: 0,
-      }}
-      viewport={{
-        once: true,
-      }}
-      transition={{
-        delay: index * 0.12,
-        duration: 0.6,
-      }}
       className="relative flex gap-8"
     >
 
@@ -161,10 +133,8 @@ export default function LearningJourney() {
 
       <div className="relative hidden w-16 justify-center lg:flex">
 
-        <motion.div
-          whileHover={{
-            scale: 1.1,
-          }}
+        <div
+          
           className="
             z-20
             flex
@@ -185,19 +155,14 @@ export default function LearningJourney() {
             strokeWidth={2}
           />
 
-        </motion.div>
+        </div>
 
       </div>
 
       {/* Card */}
 
-      <motion.div
-        whileHover={{
-          y: -6,
-        }}
-        transition={{
-          duration: 0.25,
-        }}
+      <div
+        
         className="
           flex-1
           overflow-hidden
@@ -306,19 +271,8 @@ export default function LearningJourney() {
 
           <div className="h-2 overflow-hidden rounded-full bg-neutral-200">
 
-            <motion.div
-              initial={{
-                width: 0,
-              }}
-              whileInView={{
-                width: `${item.progress}%`,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 1,
-              }}
+            <div
+              
               className="h-full rounded-full bg-violet-600"
             />
 
@@ -326,9 +280,9 @@ export default function LearningJourney() {
 
         </div>
 
-      </motion.div>
+      </div>
 
-    </motion.div>
+    </div>
   );
 })}
 {/* Remaining Steps */}
@@ -339,23 +293,9 @@ export default function LearningJourney() {
   const isLast = index === 1;
 
   return (
-    <motion.div
+    <div
       key={item.step}
-      initial={{
-        opacity: 0,
-        x: 60,
-      }}
-      whileInView={{
-        opacity: 1,
-        x: 0,
-      }}
-      viewport={{
-        once: true,
-      }}
-      transition={{
-        delay: index * 0.15,
-        duration: 0.6,
-      }}
+      
       className="relative flex gap-8"
     >
 
@@ -407,10 +347,10 @@ export default function LearningJourney() {
 
       <motion.div
         whileHover={{
-          y: -6,
+          y: -2,
         }}
         transition={{
-          duration: 0.25,
+          duration: 0.05,
         }}
         className={`
           relative
@@ -534,19 +474,8 @@ export default function LearningJourney() {
 
             <div className="h-2 overflow-hidden rounded-full bg-neutral-200">
 
-              <motion.div
-                initial={{
-                  width: 0,
-                }}
-                whileInView={{
-                  width: `${item.progress}%`,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 1,
-                }}
+              <div
+                
                 className="h-full rounded-full bg-violet-600"
               />
 
@@ -558,7 +487,7 @@ export default function LearningJourney() {
 
       </motion.div>
 
-    </motion.div>
+    </div>
   );
 })}
         </div>
@@ -567,21 +496,8 @@ export default function LearningJourney() {
 
         {/* Journey Destination */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 50,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
+        <div
+         
           className="relative mt-28"
         >
 
@@ -603,16 +519,8 @@ export default function LearningJourney() {
 
             {/* Background Glow */}
 
-            <motion.div
-              animate={{
-                scale: [1, 1.08, 1],
-                opacity: [0.15, 0.3, 0.15],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+            <div
+              
               className="
                 absolute
                 right-[-100px]
@@ -754,44 +662,24 @@ export default function LearningJourney() {
 
           </div>
 
-        </motion.div>
+        </div>
                 {/* Section Divider */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            delay: 0.2,
-            duration: 0.8,
-          }}
+        <div
+          
           className="relative mt-28 flex justify-center"
         >
 
           <div className="h-px w-full max-w-5xl bg-gradient-to-r from-transparent via-neutral-300 to-transparent" />
 
-        </motion.div>
+        </div>
 
       </Container>
 
       {/* Ambient Lights */}
 
-      <motion.div
-        animate={{
-          opacity: [0.05, 0.12, 0.05],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+       
         className="
           pointer-events-none
           absolute
@@ -805,16 +693,8 @@ export default function LearningJourney() {
         "
       />
 
-      <motion.div
-        animate={{
-          opacity: [0.04, 0.10, 0.04],
-          scale: [1, 1.05, 1],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="
           pointer-events-none
           absolute

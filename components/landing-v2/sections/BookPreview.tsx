@@ -44,11 +44,7 @@ export default function BookPreview() {
 
         {/* Heading */}
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="mx-auto max-w-4xl text-center"
         >
 
@@ -85,37 +81,16 @@ export default function BookPreview() {
 
           </Link>
 
-        </motion.div>
+        </div>
 
         {/* Content */}
 
         <div className="mt-24 grid items-center gap-16 lg:grid-cols-[1fr_0.9fr]">
                     {/* LEFT */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -40,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.6,
-            }}
-          >
+          
 
-            <motion.div
-              whileHover={{
-                y: -6,
-              }}
-              transition={{
-                duration: 0.3,
-              }}
+            <div
               className="
                 overflow-hidden
                 rounded-[34px]
@@ -255,72 +230,40 @@ export default function BookPreview() {
 
               </div>
 
-            </motion.div>
+            </div>
 
-          </motion.div>
+          
                   {/* RIGHT */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 40,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.7,
-            }}
+          <div
             className="relative flex items-center justify-center"
           >
 
             {/* Background Rings */}
 
-            <div className="absolute h-[540px] w-[540px] rounded-full border border-violet-100" />
+            {/* <div className="absolute h-[540px] w-[540px] rounded-full border border-violet-100" />
 
             <div className="absolute h-[430px] w-[430px] rounded-full border border-violet-100/70" />
 
-            <div className="absolute h-[320px] w-[320px] rounded-full border border-violet-100/40" />
+            <div className="absolute h-[320px] w-[320px] rounded-full border border-violet-100/40" /> */}
 
             {/* Soft Glow */}
 
-            <motion.div
-              animate={{
-                scale: [1, 1.08, 1],
-                opacity: [0.15, 0.3, 0.15],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+            <div
               className="absolute h-[360px] w-[360px] rounded-full bg-violet-300/20 blur-[120px]"
             />
 
             {/* Floating Book */}
 
-            <motion.div
-              animate={{
-                y: [-12, 12, -12],
-                rotate: [-2, 2, -2],
-              }}
-              transition={{
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+            <div
               className="relative z-20"
             >
 
               <Image
                 src="/images/book.png"
                 alt="AI Masterclass"
-                width={360}
-                height={520}
+                width={500}
+                height={720}
                 priority
                 className="
                   relative
@@ -332,7 +275,7 @@ export default function BookPreview() {
                 "
               />
 
-            </motion.div>
+            </div>
 
             {/* Platform */}
 
@@ -350,14 +293,8 @@ export default function BookPreview() {
 
             {/* Floating Badge */}
 
-            <motion.div
-              animate={{
-                y: [0, -6, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-              }}
+            <div
+              
               className="
                 absolute
                 left-0
@@ -393,18 +330,12 @@ export default function BookPreview() {
 
               </p>
 
-            </motion.div>
+            </div>
 
             {/* Floating Badge */}
 
-            <motion.div
-              animate={{
-                y: [0, 8, 0],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-              }}
+            <div
+              
               className="
                 absolute
                 bottom-20
@@ -440,29 +371,15 @@ export default function BookPreview() {
 
               </p>
 
-            </motion.div>
+            </div>
 
-          </motion.div>
+          </div>
 
         </div>
                 {/* Bottom CTA */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            delay: 0.15,
-            duration: 0.6,
-          }}
+        <div
+          
           className="mt-24"
         >
 
@@ -534,7 +451,7 @@ export default function BookPreview() {
 
           </div>
 
-        </motion.div>
+        </div>
               </Container>
 
       {/* Bottom Fade */}
@@ -543,29 +460,13 @@ export default function BookPreview() {
 
       {/* Ambient Light */}
 
-      <motion.div
-        animate={{
-          opacity: [0.04, 0.12, 0.04],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="pointer-events-none absolute -left-32 top-28 h-72 w-72 rounded-full bg-violet-300 blur-[140px]"
       />
 
-      <motion.div
-        animate={{
-          opacity: [0.05, 0.10, 0.05],
-          scale: [1, 1.05, 1],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="pointer-events-none absolute -right-32 bottom-16 h-80 w-80 rounded-full bg-violet-200 blur-[150px]"
       />
 

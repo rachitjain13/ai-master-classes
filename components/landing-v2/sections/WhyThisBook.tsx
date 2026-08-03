@@ -50,21 +50,8 @@ export default function WhyThisBook() {
 
         {/* Heading */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 24,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.55,
-          }}
+        <div
+         
           className="mx-auto max-w-3xl text-center"
         >
 
@@ -125,7 +112,7 @@ export default function WhyThisBook() {
 
           </p>
 
-        </motion.div>
+        </div>
 
         {/* Comparison */}
 
@@ -162,23 +149,9 @@ export default function WhyThisBook() {
 
             {comparisons.map((item, index) => (
 
-              <motion.div
+              <div
                 key={index}
-                initial={{
-                  opacity: 0,
-                  y: 25,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  delay: index * 0.08,
-                  duration: 0.45,
-                }}
+                
                 className="
                   group
                   grid
@@ -252,7 +225,7 @@ export default function WhyThisBook() {
 
                   <motion.div
                     whileHover={{
-                      scale: 1.08,
+                      scale: 0.08,
                     }}
                     className="
                       flex
@@ -286,7 +259,7 @@ export default function WhyThisBook() {
 
                 </div>
 
-              </motion.div>
+              </div>
 
             ))}
 
@@ -294,21 +267,8 @@ export default function WhyThisBook() {
         </div>
                   {/* Premium Insight */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.6,
-          }}
+        <div
+         
           className="mt-16"
         >
 
@@ -412,7 +372,7 @@ export default function WhyThisBook() {
 
           </div>
 
-        </motion.div>
+        </div>
               </Container>
 
       {/* Bottom Fade */}
@@ -421,16 +381,8 @@ export default function WhyThisBook() {
 
       {/* Ambient Glow - Left */}
 
-      <motion.div
-        animate={{
-          opacity: [0.03, 0.08, 0.03],
-          scale: [1, 1.06, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="
           pointer-events-none
           absolute
@@ -446,16 +398,8 @@ export default function WhyThisBook() {
 
       {/* Ambient Glow - Right */}
 
-      <motion.div
-        animate={{
-          opacity: [0.02, 0.07, 0.02],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+       
         className="
           pointer-events-none
           absolute

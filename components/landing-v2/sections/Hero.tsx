@@ -45,22 +45,20 @@ export default function Hero() {
 
         {/* Grid */}
 
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:72px_72px]" />
+        <div className="
+grid
+min-h-screen
+items-center
+gap-8
+pt-32
+pb-20
+lg:grid-cols-[1.05fr_0.95fr]
+"/>
 
         {/* Soft Glow */}
 
-        <motion.div
-          animate={{
-            scale: [1, 1.08, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-neutral-200 blur-[140px]"
-        />
+        <div className="absolute left-1/2 top-20 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-neutral-200/60 blur-[80px]" />
+        
 
       </div>
 
@@ -86,7 +84,7 @@ export default function Hero() {
 
             {/* Badge */}
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded- border border-neutral-200 bg-white px-4 py-2 shadow-sm">
 
               <Sparkles
                 className="h-4 w-4"
@@ -101,7 +99,19 @@ export default function Hero() {
 
             {/* Heading */}
 
-            <h1 className="mt-8 max-w-2xl text-[40px] font-bold leading-[1.02] tracking-[-0.045em] text-black sm:text-[48px] lg:text-[58px]">
+            <h1
+className="
+mt-8
+max-w-[500px]
+text-[30px]
+font-bold
+leading-[1.03]
+tracking-[-0.045em]
+text-black
+sm:text-[40px]
+lg:text-[40px]
+"
+>
 
               Learn Practical AI
               <br />
@@ -118,7 +128,9 @@ export default function Hero() {
 
             {/* Subtitle */}
 
-            <p className="mt-7 max-w-xl text-[18px] leading-8 text-neutral-600">
+            <p className="mt-8 max-w-[540px]
+text-[15px]
+leading-8 text-neutral-600">
 
               Master ChatGPT, Gemini, Prompt Engineering,
               AI automation and practical workflows in a
@@ -128,28 +140,38 @@ export default function Hero() {
 
             {/* CTA */}
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-6">
 
               <Button
-                size="lg"
-                showArrow
-                onClick={handleCheckout}
-              >
-                Get Instant Access
-              </Button>
+  size="lg"
+  showArrow
+  onClick={handleCheckout}
+  className="
+h-12
+min-w-[200px]
+rounded-2xl
+bg-black
+px-6
+text-[14px]
+font-semibold
+text-white
+shadow-lg
+hover:bg-neutral-900
+transition-all
+duration-200
+hover:scale-[1.02]
+gap-2
+"
+>
+  Buy Now
+</Button>
 
-              <Button
-                size="lg"
-                variant="secondary"
-              >
-                Preview Book
-              </Button>
 
             </div>
 
             {/* Price */}
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-6">
 
               <span className="text-4xl font-bold text-black">
                 ₹149
@@ -166,20 +188,14 @@ export default function Hero() {
             </div>
                         {/* Trust Chips */}
 
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
 
               {TRUST_ITEMS.map((item) => {
                 const Icon = item.icon;
 
                 return (
-                  <motion.div
+                  <div
                     key={item.label}
-                    whileHover={{
-                      y: -2,
-                    }}
-                    transition={{
-                      duration: 0.2,
-                    }}
                     className="flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 shadow-sm"
                   >
                     <Icon
@@ -191,7 +207,7 @@ export default function Hero() {
                       {item.label}
                     </span>
 
-                  </motion.div>
+                  </div>
                 );
               })}
 
@@ -217,23 +233,30 @@ export default function Hero() {
             className="relative flex items-center justify-center"
           >
 
-            {/* Background Card */}
 
-            <div className="absolute h-[520px] w-[420px] rounded-[40px] border border-neutral-200 bg-neutral-50" />
+            {/* <div className="absolute h-[520px] w-[420px] rounded-[40px] border border-neutral-200 bg-neutral-50" /> */}
 
-            {/* Shadow */}
-
-            <div className="absolute bottom-4 h-10 w-72 rounded-full bg-black/10 blur-2xl" />
+            
 
             {/* Book */}
+<div
+  className="
+    absolute
+    bottom-8
+    h-14
+    w-72
+    rounded-full
+    bg-black/10
+    blur-3xl
+  "
+/>
 
             <motion.div
               animate={{
-                y: [-10, 10, -10],
-                rotate: [-1, 1, -1],
+                y:[-1,1,-1]
               }}
               transition={{
-                duration: 6,
+                duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
@@ -243,30 +266,17 @@ export default function Hero() {
               <Image
                 src="/images/book.png"
                 alt="AI Masterclass Book"
-                width={360}
-                height={510}
+                width={500}
+                height={1110}
                 priority
-                className="rounded-[26px] object-cover shadow-[0_35px_90px_rgba(0,0,0,0.18)]"
+                className="rounded-[20px] object-cover shadow-[0_35px_90px_rgba(0,0,0,0.18)]"
               />
 
             </motion.div>
 
             {/* Floating Card - Top */}
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 20,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                delay: 0.9,
-              }}
-              className="absolute left-0 top-12 hidden rounded-2xl border border-neutral-200 bg-white px-5 py-4 shadow-lg lg:block"
-            >
+            <div className="absolute left-10 top-20 hidden rounded-xl border border-neutral-200 bg-white px-5 py-4 shadow-lg lg:block">
 
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-500">
                 Learning
@@ -280,11 +290,11 @@ export default function Hero() {
                 Beginner to practical AI workflows.
               </p>
 
-            </motion.div>
+       </div>
 
             {/* Floating Card - Bottom */}
 
-            <motion.div
+            {/* <motion.div
               initial={{
                 opacity: 0,
                 y: -20,
@@ -311,7 +321,7 @@ export default function Hero() {
                 Learn AI with a practical approach.
               </p>
 
-            </motion.div>
+            </motion.div> */}
 
           </motion.div>
 

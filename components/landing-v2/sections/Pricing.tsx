@@ -38,28 +38,15 @@ export default function Pricing() {
 
         {/* Heading */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.55,
-          }}
+        <div
+          
           className="mx-auto max-w-3xl text-center"
         >
 
           <span
             className="
               inline-flex
-              rounded-full
+              rounded-half
               border
               border-violet-200
               bg-violet-50
@@ -115,28 +102,15 @@ export default function Pricing() {
 
           </p>
 
-        </motion.div>
+        </div>
 
         {/* Pricing Layout */}
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_420px]">
                     {/* LEFT */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -30,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.55,
-            }}
+          <div
+            
           >
 
             <div className="rounded-[28px] border border-neutral-200 bg-white p-7 shadow-[0_15px_50px_rgba(0,0,0,.05)]">
@@ -170,14 +144,9 @@ export default function Pricing() {
 
                 {features.map((feature) => (
 
-                  <motion.div
+                  <div
                     key={feature}
-                    whileHover={{
-                      x: 4,
-                    }}
-                    transition={{
-                      duration: 0.2,
-                    }}
+                    
                     className="
                       flex
                       items-center
@@ -210,7 +179,7 @@ export default function Pricing() {
 
                     </span>
 
-                  </motion.div>
+                  </div>
 
                 ))}
 
@@ -252,24 +221,11 @@ export default function Pricing() {
 
             </div>
 
-          </motion.div>
+          </div>
                     {/* RIGHT */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 30,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.55,
-            }}
+          <div
+            
           >
 
             <div className="sticky top-28 rounded-[28px] border border-violet-200 bg-white p-7 shadow-[0_20px_70px_rgba(0,0,0,.08)]">
@@ -560,45 +516,26 @@ export default function Pricing() {
 
             </div>
 
-          </motion.div>
+          </div>
 
         </div>
               </Container>
 
       {/* Section Divider */}
 
-      <motion.div
-        initial={{
-          opacity: 0,
-        }}
-        whileInView={{
-          opacity: 1,
-        }}
-        viewport={{
-          once: true,
-        }}
-        transition={{
-          duration: 0.7,
-        }}
+      <div
+        
         className="relative mt-24 flex justify-center"
       >
 
         <div className="h-px w-full max-w-6xl bg-gradient-to-r from-transparent via-neutral-300 to-transparent" />
 
-      </motion.div>
+      </div>
 
       {/* Ambient Glow */}
 
-      <motion.div
-        animate={{
-          opacity: [0.02, 0.08, 0.02],
-          scale: [1, 1.06, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="
           pointer-events-none
           absolute
@@ -612,16 +549,8 @@ export default function Pricing() {
         "
       />
 
-      <motion.div
-        animate={{
-          opacity: [0.03, 0.09, 0.03],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="
           pointer-events-none
           absolute
