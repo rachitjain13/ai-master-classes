@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const cashfree = axios.create({
   baseURL:
-    process.env.CASHFREE_ENV === "SANDBOX"
+    process.env.CASHFREE_ENV === "PRODUCTION"
       ? "https://api.cashfree.com/pg"
       : "https://sandbox.cashfree.com/pg",
 
