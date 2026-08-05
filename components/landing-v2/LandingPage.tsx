@@ -11,7 +11,23 @@ import LearningJourney from "./sections/LearningJourney";
 import WhyThisBook from "./sections/WhyThisBook";
 import Footer from "../sections/Footer";
 
+import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+
 export default function LandingPage() {
+  const searchParams = useSearchParams();
+
+useEffect(() => {
+  const ref = searchParams.get("ref");
+
+  if (!ref) return;
+
+  document.cookie =
+    `affiliate_ref=${ref}; path=/; max-age=${60 * 60 * 24 * 30}; SameSite=Lax`;
+
+  console.log("Affiliate Saved:", ref);
+
+}, [searchParams]);
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-white text-black">
       {/* Background */}

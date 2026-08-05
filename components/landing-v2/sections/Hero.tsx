@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
-//   ArrowRight,
+  //   ArrowRight,
   BookOpen,
   ShieldCheck,
   Sparkles,
@@ -58,7 +58,7 @@ lg:grid-cols-[1.05fr_0.95fr]
         {/* Soft Glow */}
 
         <div className="absolute left-1/2 top-20 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-neutral-200/60 blur-[80px]" />
-        
+
 
       </div>
 
@@ -100,7 +100,7 @@ lg:grid-cols-[1.05fr_0.95fr]
             {/* Heading */}
 
             <h1
-className="
+              className="
 mt-8
 max-w-[500px]
 text-[30px]
@@ -111,7 +111,7 @@ text-black
 sm:text-[40px]
 lg:text-[40px]
 "
->
+            >
 
               Learn Practical AI
               <br />
@@ -143,10 +143,10 @@ leading-8 text-neutral-600">
             <div className="mt-8 flex flex-wrap items-center gap-6">
 
               <Button
-  size="lg"
-  showArrow
-  onClick={handleCheckout}
-  className="
+                size="lg"
+                showArrow
+                onClick={handleCheckout}
+                className="
 h-12
 min-w-[200px]
 rounded-2xl
@@ -162,9 +162,9 @@ duration-200
 hover:scale-[1.02]
 gap-2
 "
->
-  Buy Now
-</Button>
+              >
+                Buy Now
+              </Button>
 
 
             </div>
@@ -186,7 +186,7 @@ gap-2
               </span>
 
             </div>
-                        {/* Trust Chips */}
+            {/* Trust Chips */}
 
             <div className="mt-8 flex flex-wrap gap-3">
 
@@ -236,11 +236,11 @@ gap-2
 
             {/* <div className="absolute h-[520px] w-[420px] rounded-[40px] border border-neutral-200 bg-neutral-50" /> */}
 
-            
+
 
             {/* Book */}
-<div
-  className="
+            <div
+              className="
     absolute
     bottom-8
     h-14
@@ -249,11 +249,11 @@ gap-2
     bg-black/10
     blur-3xl
   "
-/>
+            />
 
             <motion.div
               animate={{
-                y:[-1,1,-1]
+                y: [-1, 1, -1]
               }}
               transition={{
                 duration: 4,
@@ -267,7 +267,7 @@ gap-2
                 src="/images/book.png"
                 alt="AI Masterclass Book"
                 width={500}
-                height={1110}
+                height={510}
                 priority
                 className="rounded-[20px] object-cover shadow-[0_35px_90px_rgba(0,0,0,0.18)]"
               />
@@ -290,7 +290,7 @@ gap-2
                 Beginner to practical AI workflows.
               </p>
 
-       </div>
+            </div>
 
             {/* Floating Card - Bottom */}
 
@@ -326,7 +326,7 @@ gap-2
           </motion.div>
 
         </div>
-                {/* Bottom Meta */}
+        {/* Bottom Meta */}
 
         <motion.div
           initial={{
@@ -453,7 +453,7 @@ gap-2
           </div>
 
         </motion.div>
-              </Container>
+      </Container>
 
       {/* Bottom Fade */}
 

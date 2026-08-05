@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, amount } = await req.json();
+    const { name, email, amount, affiliateCode, } = await req.json();
 
     const orderId = uuid();
 
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
         customer_id: orderId,
         customer_name: name,
         customer_email: email,
-        customer_phone: "9999999999",
+        customer_phone: "",
       },
 
       order_meta: {
@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
       orderId,
       cfOrderId: response.data.cf_order_id,
       amount,
+       affiliateCode,
       paymentStatus: "PENDING",
     });
 

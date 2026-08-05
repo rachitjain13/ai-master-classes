@@ -18,7 +18,13 @@ export default function CheckoutPage() {
 
     const name = formData.get("name");
     const email = formData.get("email");
-
+    const affiliateCode =
+  document.cookie
+    .split("; ")
+    .find((row) =>
+      row.startsWith("affiliate_ref=")
+    )
+    ?.split("=")[1] || null;
     try {
       const response = await fetch(
         "/api/cashfree/create-order",
@@ -31,6 +37,7 @@ export default function CheckoutPage() {
             name,
             email,
             amount: 149,
+            affiliateCode,
           }),
         }
       );

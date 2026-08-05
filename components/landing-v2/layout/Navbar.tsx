@@ -84,137 +84,148 @@ export default function Navbar() {
     });
   };
   return (
-  <>
-    <motion.header
-      initial={{
-        y: -80,
-        opacity: 0,
-      }}
-      animate={{
-        y: 0,
-        opacity: 1,
-      }}
-      transition={{
-        duration: 0.45,
-      }}
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "border-b border-neutral-200 bg-white/90 backdrop-blur-xl shadow-sm"
-          : "bg-transparent"
-      )}
-    >
-      <Container className="max-w-7xl">
+    <>
+      <motion.header
+        initial={{
+          y: -80,
+          opacity: 0,
+        }}
+        animate={{
+          y: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.45,
+        }}
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+          isScrolled
+            ? "border-b border-neutral-200 bg-white/90 backdrop-blur-xl shadow-sm"
+            : "bg-transparent"
+        )}
+      >
+        <Container className="max-w-7xl">
 
-        <div className="flex h-[72px] items-center justify-between">
+          <div className="flex h-[72px] items-center justify-between">
 
-          {/* Logo */}
+            {/* Logo */}
 
-          <Link
-            href="/"
-            className="flex items-center gap-3"
-          >
-
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black shadow-md">
-
-              <span className="text-base font-bold text-white">
-                AI
-              </span>
-
-            </div>
-
-            <div>
-
-              <h2 className="text-[17px] font-bold text-black">
-                {SITE.name}
-              </h2>
-
-              <p className="text-xs text-neutral-500">
-                Practical AI Learning
-              </p>
-
-            </div>
-
-          </Link>
-
-          {/* Desktop Navigation */}
-
-          <nav className="hidden items-center gap-10 lg:flex">
-
-            {NAV_LINKS.map((item) => {
-
-              const active =
-                activeSection === item.href;
-
-              return (
-
-                <button
-                  key={item.href}
-                  onClick={() =>
-                    scrollToSection(item.href)
-                  }
-                  className={cn(
-                    "relative text-[15px] font-medium transition-colors",
-                    active
-                      ? "text-black"
-                      : "text-neutral-500 hover:text-black"
-                  )}
-                >
-
-                  {item.label}
-
-                  {active && (
-
-                    <motion.span
-                      layoutId="navbar-active"
-                      className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-black"
-                    />
-
-                  )}
-
-                </button>
-
-              );
-
-            })}
-
-          </nav>
-
-          {/* CTA */}
-
-          <div className="hidden lg:block">
-
-            <Button
-              size="lg"
-              onClick={() => router.push("/checkout")}
-              className="
-                h-11
-                rounded-xl
-                bg-black
-                px-6
-                text-sm
-                font-semibold
-                text-white
-                shadow-lg
-                transition-all
-                hover:scale-[1.02]
-                hover:bg-neutral-900
-              "
+            <Link
+              href="/"
+              className="flex items-center gap-3"
             >
 
-              Buy Now • ₹{SITE.price}
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black shadow-md">
 
-            </Button>
+                <span className="text-base font-bold text-white">
+                  AI
+                </span>
 
-          </div>
+              </div>
 
-          {/* Mobile */}
+              <div>
 
-          <button
-            onClick={() =>
-              setMobileOpen((prev) => !prev)
-            }
-            className="
+                <h2 className="text-[17px] font-bold text-black">
+                  {SITE.name}
+                </h2>
+
+                <p className="text-xs text-neutral-500">
+                  Practical AI Learning
+                </p>
+
+              </div>
+
+            </Link>
+
+            {/* Desktop Navigation */}
+
+            <nav className="hidden items-center gap-10 lg:flex">
+
+              {NAV_LINKS.map((item) => {
+
+                const active =
+                  activeSection === item.href;
+
+                return (
+
+                  <button
+                    key={item.href}
+                    onClick={() =>
+                      scrollToSection(item.href)
+                    }
+                    className={cn(
+                      "relative text-[15px] font-medium transition-colors",
+                      active
+                        ? "text-black"
+                        : "text-neutral-500 hover:text-black"
+                    )}
+                  >
+
+                    {item.label}
+
+                    {active && (
+
+                      <motion.span
+                        layoutId="navbar-active"
+                        className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-black"
+                      />
+
+                    )}
+
+                  </button>
+
+                );
+
+              })}
+
+            </nav>
+
+            {/* CTA */}
+
+            <div className="hidden items-center gap-2 lg:flex">
+
+              <Link
+                href="/affiliate/login"
+                className="rounded-lg border border-neutral-300 px-3 py-2 text-xs font-medium text-black transition hover:bg-neutral-100"
+              >
+                Affiliate
+              </Link>
+
+              <Link
+                href="/admin/login"
+                className="rounded-lg border border-neutral-300 px-3 py-2 text-xs font-medium text-black transition hover:bg-neutral-100"
+              >
+                Admin
+              </Link>
+
+              <Button
+                size="lg"
+                onClick={() => router.push("/checkout")}
+                className="
+      h-11
+      rounded-xl
+      bg-black
+      px-6
+      text-sm
+      font-semibold
+      text-white
+      shadow-lg
+      transition-all
+      hover:scale-[1.02]
+      hover:bg-neutral-900
+    "
+              >
+                Buy Now • ₹{SITE.price}
+              </Button>
+
+            </div>
+            {/* Mobile */}
+
+            <button
+              onClick={() =>
+                setMobileOpen((prev) => !prev)
+              }
+              className="
               flex
               h-11
               w-11
@@ -228,44 +239,44 @@ export default function Navbar() {
               shadow-sm
               lg:hidden
             "
-          >
+            >
 
-            <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait">
 
-              <motion.div
-                key={mobileOpen ? "close" : "menu"}
-                initial={{
-                  opacity: 0,
-                  rotate: -90,
-                }}
-                animate={{
-                  opacity: 1,
-                  rotate: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  rotate: 90,
-                }}
-              >
+                <motion.div
+                  key={mobileOpen ? "close" : "menu"}
+                  initial={{
+                    opacity: 0,
+                    rotate: -90,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: 90,
+                  }}
+                >
 
-                {mobileOpen ? (
-                  <X size={20} />
-                ) : (
-                  <Menu size={20} />
-                )}
+                  {mobileOpen ? (
+                    <X size={20} />
+                  ) : (
+                    <Menu size={20} />
+                  )}
 
-              </motion.div>
+                </motion.div>
 
-            </AnimatePresence>
+              </AnimatePresence>
 
-          </button>
+            </button>
 
-        </div>
+          </div>
 
-      </Container>
+        </Container>
 
-    </motion.header>
-          {/* Mobile Menu */}
+      </motion.header>
+      {/* Mobile Menu */}
 
       <AnimatePresence>
 
@@ -348,7 +359,25 @@ export default function Navbar() {
                 })}
 
               </nav>
+              <div className="mb-4 flex gap-2">
 
+                <Link
+                  href="/affiliate/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex-1 rounded-lg border border-neutral-300 px-4 py-3 text-center text-sm font-medium text-black"
+                >
+                  Affiliate
+                </Link>
+
+                <Link
+                  href="/admin/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex-1 rounded-lg border border-neutral-300 px-4 py-3 text-center text-sm font-medium text-black"
+                >
+                  Admin
+                </Link>
+
+              </div>
               <div className="mt-6">
 
                 <Button

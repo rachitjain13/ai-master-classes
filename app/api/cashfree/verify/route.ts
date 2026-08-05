@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cashfree } from "@/lib/cashfree";
 import { connectDB } from "@/lib/db";
 import Customer from "@/models/Customer";
+import Affiliate from "@/models/Affiliate";
 import { v4 as uuid } from "uuid";
 
 export async function POST(req: NextRequest) {
@@ -23,8 +24,8 @@ export async function POST(req: NextRequest) {
 
     // Customer Fetch
     const customer = await Customer.findOne({
-  orderId: order.order_id,
-});
+      orderId: order.order_id,
+    });
 
     if (!customer) {
       return NextResponse.json(
@@ -71,6 +72,44 @@ export async function POST(req: NextRequest) {
     customer.emailSent = false;
 
     await customer.save();
+    // =========================
+    // Affiliate Update
+    // =========================
+
+    if (customer.affiliateCode) {
+
+      const affiliate = await Affiliate.findOne({
+        affiliateCode: customer.affiliateCode,
+      });
+
+      if (affiliate) {
+
+        affiliate.sales += 1;
+
+        affiliate.revenue += customer.amount;
+
+        if (affiliate.commissionType === "PERCENTAGE") {
+
+          affiliate.commissionEarned +=
+            (customer.amount * affiliate.commissionValue) / 100;
+
+        } else {
+
+          affiliate.commissionEarned +=
+            affiliate.commissionValue;
+
+        }
+
+        await affiliate.save();
+
+        console.log(
+          " Affiliate Commission Updated:",
+          affiliate.affiliateCode
+        );
+
+      }
+
+    }
 
     // Send Email
     const emailResponse = await fetch(
@@ -88,7 +127,7 @@ export async function POST(req: NextRequest) {
           readerToken: customer.readerToken
 
           // future
-        
+
         }),
       }
     );

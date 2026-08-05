@@ -36,6 +36,8 @@ export interface ICustomer extends Document {
 
   createdAt: Date;
   updatedAt: Date;
+
+  affiliateCode?: string | null;
 }
 
 const customerSchema = new Schema<ICustomer>(
@@ -74,6 +76,10 @@ const customerSchema = new Schema<ICustomer>(
       type: String,
       enum: ["PENDING", "PAID", "FAILED"],
       default: "PENDING",
+    },
+    affiliateCode: {
+      type: String,
+      default: null,
     },
 
     emailSent: {
