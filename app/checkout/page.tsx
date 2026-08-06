@@ -188,6 +188,34 @@ console.log(result);
             </div>
 
             {/* Email */}
+            <div>
+  <label className="mb-2 block text-[13px] font-medium text-neutral-700">
+    Email Address
+  </label>
+
+  <input
+    type="email"
+    name="email"
+    required
+    placeholder="you@example.com"
+    className="
+      h-12
+      w-full
+      rounded-xl
+      border
+      border-neutral-200
+      bg-white
+      px-4
+      text-sm
+      outline-none
+      transition-all
+      focus:border-violet-500
+      focus:ring-4
+      focus:ring-violet-100
+      text-black
+    "
+  />
+</div>
 
             <div>
               <label className="mb-2 block text-[13px] font-medium text-neutral-700">
@@ -218,6 +246,7 @@ console.log(result);
     focus:border-violet-500
     focus:ring-4
     focus:ring-violet-100
+    text-black
   "
 />
 
