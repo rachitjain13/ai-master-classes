@@ -78,21 +78,8 @@ export default function WhatYouWillMaster() {
 
         {/* Heading */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 25,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.6,
-          }}
-          viewport={{
-            once: true,
-          }}
+        <div
+          
           className="mx-auto max-w-3xl text-center"
         >
 
@@ -118,7 +105,7 @@ export default function WhatYouWillMaster() {
 
           </p>
 
-        </motion.div>
+        </div>
 
         {/* Cards */}
 
@@ -245,20 +232,8 @@ export default function WhatYouWillMaster() {
 
           {/* Bottom Accent */}
 
-          <motion.div
-            initial={{
-              scaleX: 0,
-            }}
-            whileInView={{
-              scaleX: 1,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              delay: 0.2,
-              duration: 0.6,
-            }}
+          <div
+            
             className="
               absolute
               bottom-0
@@ -312,29 +287,13 @@ export default function WhatYouWillMaster() {
 
       {/* Decorative Blur */}
 
-      <motion.div
-        animate={{
-          opacity: [0.06, 0.12, 0.06],
-          scale: [1, 1.05, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="pointer-events-none absolute -left-24 top-24 h-64 w-64 rounded-full bg-neutral-300 blur-[120px]"
       />
 
-      <motion.div
-        animate={{
-          opacity: [0.04, 0.10, 0.04],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="pointer-events-none absolute -right-24 bottom-16 h-72 w-72 rounded-full bg-neutral-300 blur-[140px]"
       />
 

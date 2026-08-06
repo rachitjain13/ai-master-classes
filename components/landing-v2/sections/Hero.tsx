@@ -68,18 +68,8 @@ lg:grid-cols-[1.05fr_0.95fr]
 
           {/* LEFT */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 35,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.7,
-            }}
+          <div
+            
           >
 
             {/* Badge */}
@@ -213,23 +203,12 @@ gap-2
 
             </div>
 
-          </motion.div>
+          </div>
 
           {/* RIGHT SIDE */}
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 50,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.15,
-            }}
+          <div
+            
             className="relative flex items-center justify-center"
           >
 
@@ -251,15 +230,8 @@ gap-2
   "
             />
 
-            <motion.div
-              animate={{
-                y: [-1, 1, -1]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+            <div
+              
               className="relative z-10"
             >
 
@@ -272,7 +244,7 @@ gap-2
                 className="rounded-[20px] object-cover shadow-[0_35px_90px_rgba(0,0,0,0.18)]"
               />
 
-            </motion.div>
+            </div>
 
             {/* Floating Card - Top */}
 
@@ -323,24 +295,13 @@ gap-2
 
             </motion.div> */}
 
-          </motion.div>
+          </div>
 
         </div>
         {/* Bottom Meta */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            delay: 1.15,
-            duration: 0.6,
-          }}
+        <div
+          
           className="mt-20 border-t border-neutral-200 pt-8"
         >
 
@@ -409,23 +370,12 @@ gap-2
 
           </div>
 
-        </motion.div>
+        </div>
 
         {/* Scroll Hint */}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-            y: [0, 6, 0],
-          }}
-          transition={{
-            delay: 1.6,
-            duration: 2,
-            repeat: Infinity,
-          }}
+        <div
+          
           className="mt-14 hidden justify-center lg:flex"
         >
 
@@ -437,14 +387,7 @@ gap-2
 
             <div className="flex h-11 w-7 justify-center rounded-full border border-neutral-300">
 
-              <motion.div
-                animate={{
-                  y: [0, 14, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                }}
+              <div
                 className="mt-2 h-2 w-2 rounded-full bg-black"
               />
 
@@ -452,7 +395,7 @@ gap-2
 
           </div>
 
-        </motion.div>
+        </div>
       </Container>
 
       {/* Bottom Fade */}
@@ -461,29 +404,13 @@ gap-2
 
       {/* Side Glow */}
 
-      <motion.div
-        animate={{
-          opacity: [0.08, 0.18, 0.08],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-neutral-300 blur-[110px]"
       />
 
-      <motion.div
-        animate={{
-          opacity: [0.06, 0.16, 0.06],
-          scale: [1, 1.08, 1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        
         className="pointer-events-none absolute -right-24 top-20 h-80 w-80 rounded-full bg-neutral-300 blur-[120px]"
       />
 

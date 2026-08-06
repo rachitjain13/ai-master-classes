@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
 
   } catch (error) {
 
-    console.error(error);
+    console.error("ADMIN LOGIN ERROR:", error);
 
     return NextResponse.json(
       {
