@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, amount, affiliateCode, } = await req.json();
+    const { name, email, amount, affiliateCode, phone } = await req.json();
 
     const orderId = uuid();
 
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
         customer_id: orderId,
         customer_name: name,
         customer_email: email,
-        customer_phone: "",
+        customer_phone: phone,
       },
 
       order_meta: {

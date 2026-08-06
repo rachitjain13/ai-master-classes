@@ -18,6 +18,7 @@ export default function CheckoutPage() {
 
     const name = formData.get("name");
     const email = formData.get("email");
+    const phone = formData.get("phone") as string;
     const affiliateCode =
   document.cookie
     .split("; ")
@@ -36,6 +37,7 @@ export default function CheckoutPage() {
           body: JSON.stringify({
             name,
             email,
+            phone,
             amount: 149,
             affiliateCode,
           }),
@@ -188,71 +190,36 @@ console.log(result);
             {/* Email */}
 
             <div>
-
               <label className="mb-2 block text-[13px] font-medium text-neutral-700">
+  Phone Number
+  <span className="ml-1 text-red-500">*</span>
+</label>
 
-                Email Address
-
-              </label>
-
-              <input
-                required
-                type="email"
-                name="email"
-                placeholder="you@example.com"
-                className="
-                  h-12
-                  w-full
-                  rounded-xl
-                  border
-                  border-neutral-200
-                  bg-white
-                  px-4
-                  text-black
-                  outline-none
-                  transition-all
-                  focus:border-violet-500
-                  focus:ring-4
-                  focus:ring-violet-100
-                "
-              />
-
-            </div>
-
-            {/* Phone */}
-
-            <div>
-
-              <label className="mb-2 block text-[13px] font-medium text-neutral-700">
-
-                Phone Number
-                <span className="ml-1 text-neutral-400">
-
-                  (Optional)
-
-                </span>
-
-              </label>
-
-              <input
-                name="phone"
-                placeholder="+91 9876543210"
-                className="
-                  h-12
-                  w-full
-                  rounded-xl
-                  border
-                  border-neutral-200
-                  bg-white
-                  px-4
-                  text-sm
-                  outline-none
-                  transition-all
-                  focus:border-violet-500
-                  focus:ring-4
-                  focus:ring-violet-100
-                "
-              />
+<input
+  type="tel"
+  name="phone"
+  placeholder="+91 9876543210"
+  required
+  pattern="[0-9]{10}"
+  minLength={10}
+  maxLength={10}
+  inputMode="numeric"
+  className="
+    h-12
+    w-full
+    rounded-xl
+    border
+    border-neutral-200
+    bg-white
+    px-4
+    text-sm
+    outline-none
+    transition-all
+    focus:border-violet-500
+    focus:ring-4
+    focus:ring-violet-100
+  "
+/>
 
             </div>
                         {/* Pay Button */}
